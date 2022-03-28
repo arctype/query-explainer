@@ -28,11 +28,18 @@ class Home extends Component {
             <Col>
             <Display
               header = "Query Explainer"
-              title = "title goes here"
-              text = "How to use text goes here"
-              theLink = "/query-explainer" />
+              title = "SQL 	&#10145; plain text"
+              text = "Use AI to explain a SQL query in plain english"
+              theLink = "/query-writer" />
             </Col>
 
+            <Col>
+            <Display
+              header = "Query Writer"
+              title = "Plain text 	&#10145; SQL"
+              text = "Use AI to write a SQL query based on your description"
+              theLink = "/query-writer" />
+            </Col>
 
 
           </Row>

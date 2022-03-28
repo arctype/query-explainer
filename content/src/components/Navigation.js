@@ -20,12 +20,11 @@ class Navigation extends Component {
         <Navbar.Collapse>
           <Nav>
             <Nav.Link href="query-explainer"> Query Explainer </Nav.Link>
-
+            <Nav.Link href="query-writer"> Query Writer</Nav.Link>
+            <Nav.Link href="https://arctype.com">    <Button variant="primary">Try Arctype</Button> </Nav.Link>
           </Nav>
         </Navbar.Collapse>
-        <Nav>
-          <Nav.Link href="https://arctype.com">    <Button variant="primary">Try Arctype</Button> </Nav.Link>
-        </Nav>
+
         </Navbar>
       </div>
     )

@@ -4,7 +4,7 @@ import { Container, Form, Button, Card } from 'react-bootstrap'
 const { Configuration, OpenAIApi} = require("openai");
 
 
-class QueryExplainer extends Component {
+class QueryWriter extends Component {
 
   constructor(){
     super()
@@ -94,4 +94,4 @@ class QueryExplainer extends Component {
   }
 }
 
-export default QueryExplainer
+export default QueryWriter

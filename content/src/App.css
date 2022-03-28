@@ -6,9 +6,17 @@
   --background-text-color: #aebecf;
 }
 
+html{
+  background: var(--main-primary);
+}
+
 .App {
   text-align: center;
   background-color: var(--main-primary);
+}
+
+Button{
+  border-width: 0px !important;
 }
 
 *{
@@ -19,13 +27,40 @@ p{
   color: #aebecf;
   line-height: 1.7;
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
   margin-bottom: 1.875rem;
+}
+
+h1, h2, h3, h4{
+    font-weight: 500;
+    color: white;
+}
+
+form .btn-primary{
+  color: var(--main-white);
+  background-color: var(--main-light);
+  border-width: 0px;
+}
+form .btn-primary:hover{
+  color: var(--main-light);
+  background-color: var(--main-white);
+}
+form .btn-primary:active{
+  color: var(--main-light);
+  background-color: var(--main-white);
+}
+form .btn-primary:visited{
+  color: var(--main-light);
+  background-color: var(--main-white);
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.card-body{
+  background-color: var(--main-dark);
 }
 
 @media (prefers-reduced-motion: no-preference) {
