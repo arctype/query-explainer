@@ -30,7 +30,7 @@ class QueryWriter extends Component {
 
     // run the function then wait for the response (then update the state)
     openai.createCompletion("text-davinci-002",{
-      prompt:`Write a detailed, smart, informative, professional explanation of this SQL query: ${formDataObj.queryName}`,
+      prompt:`Write a postgres SQL query based on the following description: ${formDataObj.queryName}`,
       temperature: 0.8,
       max_tokens: 100,
       top_p: 1,
@@ -53,19 +53,19 @@ class QueryWriter extends Component {
         <Container>
         <br/>
         <br/>
-          <h1> Query Explainer</h1>
-          <p> Use AI to explain a SQL query in plain english. </p>
+          <h1> Query Writerr</h1>
+          <p> Use AI to write a SQL query from your description. </p>
           <br/>
           <Form onSubmit={this.onFormSubmit}>
             <Form.Group className="mb-3" controlId = "formBasicEmail">
               <Form.Label>
-                <p>What query would you like to get an exaplanation for? (Enter as much information as you can for more accurate descriptions.)</p>
+                <p>Write a description of a query below to turn it into SQL. (Enter as much information as you can for more accurate queries.)</p>
               </Form.Label>
               <Form.Control
                 as="textarea"
                 rows="5"
                 name = "queryName"
-                placeholder = "SELECT * FROM users WHERE name = 'Test';" />
+                placeholder = "Write a query to get the signup date for all users with a gmail account in the Accounts table" />
             </Form.Group>
 
             <Button variant = "primary" size ="lg" type = "submit">
