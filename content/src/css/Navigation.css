@@ -1,0 +1,26 @@
+.navbar{
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: var(--main-primary);
+}
+
+.navbar-nav .nav-link{
+    color: white !important;
+}
+.navbar-nav .nav-link:hover{
+    color: var(--main-light) !important;
+}
+
+.navbar Button{
+  color: var(--main-light);
+  background-color: var(--main-white);
+}
+.navbar Button:hover{
+  color: var(--main-white);
+  background-color: var(--main-light);
+}
+
+.logo{
+  max-width: 150px;
+  padding: 5px;
+}

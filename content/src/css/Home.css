@@ -1,0 +1,26 @@
+.hero{
+  height: 500px;
+  background-color: var(--main-primary);
+}
+
+.curve {
+  position: relative;
+  overflow: hidden;
+}
+
+.curve::before {
+  border-radius: 100%;
+  position: absolute;
+  background: var(--main-dark);
+  right: -2000px;
+  left: -2000px;
+  top: -2000px;
+  content: '';
+  bottom: 0;
+}
+
+.card-img-overlay{
+  padding:80px 40px;
+  margin: auto;
+  max-width: 55rem;
+}

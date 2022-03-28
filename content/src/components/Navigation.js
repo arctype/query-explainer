@@ -1,18 +1,18 @@
-import logo from '../favicon.png'
+import logo from '../Arctype-white-1.png'
+import '../css/Navigation.css';
 import React from 'react'
 import { Component } from 'react'
 
 import 'bootstrap/dist/css/bootstrap.css'
-import { Nav, Navbar } from 'react-bootstrap'
+import { Nav, Navbar, Button } from 'react-bootstrap'
 
 class Navigation extends Component {
   render() {
     return (
       <div>
-        <Navbar bg="dark" variant="dark" sticky="top" expand="md" collapseOnSelect>
+        <Navbar sticky="top" expand="md" collapseOnSelect>
         <Navbar.Brand href="/">
-         <img src={logo} width="50px" />
-         <span>Mike was here</span>
+         <img src={logo} className="logo"/>
         </Navbar.Brand>
 
         <Navbar.Toggle />
@@ -20,9 +20,12 @@ class Navigation extends Component {
         <Navbar.Collapse>
           <Nav>
             <Nav.Link href="query-explainer"> Query Explainer </Nav.Link>
+
           </Nav>
         </Navbar.Collapse>
-
+        <Nav>
+          <Nav.Link href="https://arctype.com">    <Button variant="primary">Try Arctype</Button> </Nav.Link>
+        </Nav>
         </Navbar>
       </div>
     )
