@@ -13,9 +13,9 @@ class Home extends Component {
           <Card className="text-white hero curve">
             <Card.ImgOverlay>
               <br/>
-              <Card.Title><h1>Query explainer</h1></Card.Title>
+              <Card.Title><h1>Tools</h1></Card.Title>
               <Card.Text><p>
-              Arctype is a free, collaborative SQL editor for developers. Subscribe to get our changelog in your inbox every few weeks.
+              Use the Arctype toolbox to write better SQL and master the art of good database design.
                 </p>
               </Card.Text>
             </Card.ImgOverlay>
