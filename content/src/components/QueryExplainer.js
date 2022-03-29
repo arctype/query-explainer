@@ -14,7 +14,7 @@ class QueryExplainer extends Component {
     this.state = {
       heading: 'The response from the AI will be shown here',
       image: '',
-      response: 'Submit a query using the input above.'
+      response: 'Submit a query using the input above'
     }
   }
   onFormSubmit = e => {
