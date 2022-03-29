@@ -41,6 +41,14 @@ class Home extends Component {
               theLink = "/query-writer" />
             </Col>
 
+            <Col>
+            <Display
+              header = "ERD Figma Template"
+              title = "Free ERD Template"
+              text = "Create a Database Schema in <5 Minutes"
+              theLink = "https://arctype.com/blog/erd-builder/" />
+            </Col>
+
 
           </Row>
           </Container>

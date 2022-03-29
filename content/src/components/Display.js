@@ -12,9 +12,9 @@ class Display extends Component {
         <Card>
           <Card.Header as="h5">{header}</Card.Header>
           <Card.Body>
-            <Card.Title>{title}</Card.Title>
+            <Card.Title><p>{title}</p></Card.Title>
             <Card.Text>
-              {text}
+              <p>{text}</p>
             </Card.Text>
             <Nav.Link href={theLink}>
               <Button variant="primary">Go somewhere</Button>
