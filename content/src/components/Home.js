@@ -4,6 +4,7 @@ import Display from './Display'
 import '../css/Home.css';
 import { Container, Row, Col, Card} from 'react-bootstrap'
 import mainImg from '../mainImg.png'
+import QueryExplainer from './QueryExplainer'
 
 
 class Home extends Component {
@@ -13,45 +14,14 @@ class Home extends Component {
           <Card className="text-white hero curve">
             <Card.ImgOverlay>
               <br/>
-              <Card.Title><h1>Tools</h1></Card.Title>
-              <Card.Text><p>
-              Use the Arctype toolbox to write better SQL and master the art of good database design.
-                </p>
+              <Card.Title><h1>Query Explainer</h1></Card.Title>
+              <Card.Text>Use AI to explain a SQL query in plain english! <br/><br/>
+              <QueryExplainer />
               </Card.Text>
             </Card.ImgOverlay>
           </Card>
 
-          <Container>
-          <br/>
-          <br/>
-          <Row>
-            <Col>
-            <Display
-              header = "Query Explainer"
-              title = "SQL 	&#10145; plain text"
-              text = "Use AI to explain a SQL query in plain english"
-              theLink = "/query-writer" />
-            </Col>
 
-            <Col>
-            <Display
-              header = "Query Writer"
-              title = "Plain text 	&#10145; SQL"
-              text = "Use AI to write a SQL query based on your description"
-              theLink = "/query-writer" />
-            </Col>
-
-            <Col>
-            <Display
-              header = "ERD Figma Template"
-              title = "Free ERD Template"
-              text = "Create a Database Schema in <5 Minutes"
-              theLink = "https://arctype.com/blog/erd-builder/" />
-            </Col>
-
-
-          </Row>
-          </Container>
           <br/>
           <br/>
 

@@ -1,6 +1,8 @@
 import React from 'react'
 import { Component } from 'react'
 import { Container, Form, Button, Card } from 'react-bootstrap'
+import { v4 as uuid } from 'uuid'
+import Spinner from "./Spinner"
 const { Configuration, OpenAIApi} = require("openai");
 
 
@@ -11,7 +13,8 @@ class QueryExplainer extends Component {
     // starting state on page reload
     this.state = {
       heading: 'The response from the AI will be shown here',
-      response: '... awaiting the response. 1 moment please.'
+      image: '',
+      response: 'Submit a query using the input above.'
     }
   }
   onFormSubmit = e => {
@@ -20,26 +23,37 @@ class QueryExplainer extends Component {
 
     const formData = new FormData(e.target),
     formDataObj = Object.fromEntries(formData.entries())
-    console.log(formDataObj.queryName)
 
     // OPENAI function goes here
     const configuration = new Configuration({
       apiKey: process.env.REACT_APP_API_KEY,
     });
     const openai = new OpenAIApi(configuration);
+    const userid = uuid();
+
+    this.setState({
+      heading: 'Processing...',
+      image:
+            <div className="pos-center">
+                <Spinner />
+            </div>,
+      response: 'Processing...'
+    })
 
     // run the function then wait for the response (then update the state)
     openai.createCompletion("text-davinci-002",{
       prompt:`Write a detailed, smart, informative, professional explanation of this SQL query: ${formDataObj.queryName}`,
       temperature: 0.8,
-      max_tokens: 100,
+      max_tokens: 200,
       top_p: 1,
       frequency_penalty: 0,
       presence_penalty: 0,
+      user: `${userid}`
     })
     .then((response)=>{
       this.setState({
-        heading: `AI explanation: ${formDataObj.queryName}`,
+        heading: `AI explanation`,
+        image:'',
         response: `${response.data.choices[0].text}`
     })
   });
@@ -51,15 +65,10 @@ class QueryExplainer extends Component {
     return(
       <div>
         <Container>
-        <br/>
-        <br/>
-          <h1> Query Explainer</h1>
-          <p> Use AI to explain a SQL query in plain english. </p>
-          <br/>
           <Form onSubmit={this.onFormSubmit}>
             <Form.Group className="mb-3" controlId = "formBasicEmail">
               <Form.Label>
-                <p>What query would you like to get an exaplanation for? (Enter as much information as you can for more accurate descriptions.)</p>
+                What query would you like to get an exaplanation for?
               </Form.Label>
               <Form.Control
                 as="textarea"
@@ -78,11 +87,15 @@ class QueryExplainer extends Component {
 
           <Card>
             <Card.Body>
-            <Card.Title><h1>{this.state.heading}</h1></Card.Title>
-            <hr/>
+            <Card.Title>{this.state.heading}</Card.Title>
+
             <br/>
-              <Card.Text><p>
-                  {this.state.response}</p>
+              <Card.Text>
+                  {this.state.response}
+                  <br/><br/>
+                  {this.state.image}
+                  <br/>
+
               </Card.Text>
             </Card.Body>
           </Card>
