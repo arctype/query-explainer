@@ -11,15 +11,17 @@ class Navigation extends Component {
     return (
       <div>
         <Navbar sticky="top" expand="md" collapseOnSelect>
-        <Navbar.Brand href="/">
+        <Navbar.Brand href="https://arctype.com">
          <img src={logo} className="logo"/>
         </Navbar.Brand>
 
         <Navbar.Toggle />
 
         <Navbar.Collapse>
-          <Nav className="ms-auto">
-            <Nav.Link href="https://arctype.com">    <Button variant="primary">Try Arctype</Button> </Nav.Link>
+          <Nav>
+            <Nav.Link href="/">Query Explainer</Nav.Link>
+            <Nav.Link href="/query-writer">Query Writer</Nav.Link>
+            <Nav.Link href="https://arctype.com"><Button variant="primary">Try Arctype</Button></Nav.Link>
           </Nav>
         </Navbar.Collapse>
 

@@ -15,7 +15,6 @@ function App() {
       <Navigation/>
         <Routes>
           <Route path= "/" exact element={<Home/>} />
-          <Route path= "/query-explainer" exact element={<QueryExplainer/>} />
           <Route path= "/query-writer" exact element={<QueryWriter/>} />
         </Routes>
       </div>

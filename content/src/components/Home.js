@@ -20,8 +20,6 @@ class Home extends Component {
               </Card.Text>
             </Card.ImgOverlay>
           </Card>
-
-
           <br/>
           <br/>
 

@@ -6,7 +6,7 @@ import Spinner from "./Spinner"
 const { Configuration, OpenAIApi} = require("openai");
 
 
-class QueryExplainer extends Component {
+class QueryWriterComponent extends Component {
 
   constructor(){
     super()
@@ -14,7 +14,7 @@ class QueryExplainer extends Component {
     this.state = {
       heading: 'The response from the AI will be shown here',
       image: '',
-      response: 'Submit a query using the input above'
+      response: 'Submit a description using the input above'
     }
   }
   onFormSubmit = e => {
@@ -42,7 +42,7 @@ class QueryExplainer extends Component {
 
     // run the function then wait for the response (then update the state)
     openai.createCompletion("text-davinci-002",{
-      prompt:`Write a detailed, smart, informative, professional explanation of this SQL query: ${formDataObj.queryName}`,
+      prompt:`Write a detailed, smart, informative, professional SQL query using the following description: ${formDataObj.queryName}`,
       temperature: 0.8,
       max_tokens: 200,
       top_p: 1,
@@ -52,7 +52,7 @@ class QueryExplainer extends Component {
     })
     .then((response)=>{
       this.setState({
-        heading: `AI explanation`,
+        heading: `AI-generated query`,
         image:'',
         response: `${response.data.choices[0].text}`
     })
@@ -68,17 +68,17 @@ class QueryExplainer extends Component {
           <Form onSubmit={this.onFormSubmit}>
             <Form.Group className="mb-3" controlId = "formBasicEmail">
               <Form.Label>
-                What query would you like to get an exaplanation for?
+                What text would you like to turn into a SQL query?
               </Form.Label>
               <Form.Control
                 as="textarea"
                 rows="5"
                 name = "queryName"
-                placeholder = "Ex: SELECT * FROM users WHERE name = 'Test';" />
+                placeholder = "Ex: Find all paid users with a gmail account who signed up in the last 7 days." />
             </Form.Group>
 
             <Button variant = "primary" size ="lg" type = "submit">
-              Get explanation
+              Convert to query
             </Button>
           </Form>
 
@@ -107,4 +107,4 @@ class QueryExplainer extends Component {
   }
 }
 
-export default QueryExplainer
+export default QueryWriterComponent
