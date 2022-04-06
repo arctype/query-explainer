@@ -74,7 +74,8 @@ class QueryExplainer extends Component {
                 as="textarea"
                 rows="5"
                 name = "queryName"
-                placeholder = "Ex: SELECT * FROM users WHERE name = 'Test';" />
+                placeholder= "SELECT * FROM users WHERE firstName = `Test`"
+                />
             </Form.Group>
 
             <Button variant = "primary" size ="lg" type = "submit">
