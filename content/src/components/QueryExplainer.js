@@ -7,7 +7,6 @@ const { Configuration, OpenAIApi} = require("openai");
 
 
 class QueryExplainer extends Component {
-
   constructor(){
     super()
     // starting state on page reload
@@ -17,6 +16,7 @@ class QueryExplainer extends Component {
       response: 'Submit a query using the input above'
     }
   }
+
   onFormSubmit = e => {
     // prevent default (page resetting)
     e.preventDefault()
@@ -40,7 +40,7 @@ class QueryExplainer extends Component {
       response: 'Processing...'
     })
 
-
+    let explanation = "";
     // Input to content filter
     openai.createCompletion("content-filter-alpha",{
       prompt:"<|endoftext|>"+`Write a detailed, smart, informative, professional explanation of this SQL query: ${formDataObj.queryName}`+"\n--\nLabel:",
@@ -72,6 +72,7 @@ class QueryExplainer extends Component {
         })
         .then((response)=>{
           console.log("result to test: " + `${response.data.choices[0].text}`);
+          explanation = `${response.data.choices[0].text}`;
           openai.createCompletion("content-filter-alpha",{
             prompt:"<|endoftext|>"+`${response.data.choices[0].text}`+"\n--\nLabel:",
             temperature: 0,
@@ -93,7 +94,7 @@ class QueryExplainer extends Component {
               this.setState({
                 heading: `AI explanation`,
                 image:'',
-                response: `${response.data.choices[0].text}`
+                response: `${explanation}`
               })
             }
         })

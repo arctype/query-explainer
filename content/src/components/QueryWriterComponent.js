@@ -40,24 +40,67 @@ class QueryWriterComponent extends Component {
       response: 'Processing...'
     })
 
-    // run the function then wait for the response (then update the state)
-    openai.createCompletion("text-davinci-002",{
-      prompt:`Write a detailed, smart, informative, professional SQL query using the following description: ${formDataObj.queryName}`,
-      temperature: 0.8,
-      max_tokens: 200,
-      top_p: 1,
-      frequency_penalty: 0,
-      presence_penalty: 0,
+    let explanation = "";
+    // Input to content filter
+    openai.createCompletion("content-filter-alpha",{
+      prompt:"<|endoftext|>"+`Write a detailed, smart, informative, professional explanation of this SQL query: ${formDataObj.queryName}`+"\n--\nLabel:",
+      temperature: 0,
+      max_tokens: 1,
+      top_p: 0,
       user: `${userid}`
     })
     .then((response)=>{
-      this.setState({
-        heading: `AI-generated query`,
-        image:'',
-        response: `${response.data.choices[0].text}`
-    })
+      console.log("input score: " + response.data.choices[0].text);
+      console.log("logprobs: "+ response.data.choices[0].logprobs);
+      if(response.data.choices[0].text >= 2){
+        this.setState({
+          heading: `AI explanation`,
+          image:'',
+          response: `Inappropriate input - please try again with a different prompt.`
+        })
+      }
+      else{
+        // content filter result to davinci
+        openai.createCompletion("text-davinci-002",{
+          prompt:`Write a detailed, smart, informative, professional SQL query using the following description: ${formDataObj.queryName}`,
+          temperature: 0.8,
+          max_tokens: 200,
+          top_p: 1,
+          frequency_penalty: 0,
+          presence_penalty: 0,
+          user: `${userid}`
+        })
+        .then((response)=>{
+          console.log("result to test: " + `${response.data.choices[0].text}`);
+          explanation = `${response.data.choices[0].text}`;
+          openai.createCompletion("content-filter-alpha",{
+            prompt:"<|endoftext|>"+`${response.data.choices[0].text}`+"\n--\nLabel:",
+            temperature: 0,
+            max_tokens: 1,
+            top_p: 0,
+            user: `${userid}`
+          })
+          .then((response)=>{
+            console.log("input score: " + response.data.choices[0].text);
+            console.log("logprobs: "+ response.data.choices[0].logprobs);
+            if(response.data.choices[0].text >= 2){
+              this.setState({
+                heading: `AI query`,
+                image:'',
+                response: `Inappropriate generated text - please try to generate again.`
+              })
+            }
+            else{
+              this.setState({
+                heading: `AI query`,
+                image:'',
+                response: `${explanation}`
+              })
+            }
+        })
+      })
+    }
   });
-  // should add some error catching here
 
   }
 
