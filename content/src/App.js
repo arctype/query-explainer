@@ -1,18 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
-
 import Navigation from './components/Navigation'
 import Home from './components/Home'
 import QueryExplainer from './components/QueryExplainer'
 import QueryWriter from './components/QueryWriter'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import AppendHead from 'react-append-head';
-
+import AppendHead from 'react-append-head'
+import {Helmet} from "react-helmet"
+import Cio from './components/Cio';
+    Cio();
 
 function App() {
 
   return (
-    
+
     <Router>
 
       <div className="App">
