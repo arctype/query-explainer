@@ -5,8 +5,6 @@ import '../css/Home.css';
 import { Container, Row, Col, Card, Button} from 'react-bootstrap'
 import mainImg from '../mainImg.png'
 import QueryExplainer from './QueryExplainer'
-import EmailPrompt from './EmailPrompt'
-
 
 
 class Home extends React.Component {
@@ -20,7 +18,6 @@ class Home extends React.Component {
   handleLoginClick(event) {
    this.setState({value: event.target.value});
    event.preventDefault();
-   alert('A name was submitted: ' + this.state.value);
    this.setState({isLoggedIn: true});
 
  }
@@ -37,10 +34,10 @@ class Home extends React.Component {
     } else {
       inputArea =
       <form onSubmit={this.handleSubmit}>
-        <p>Explain</p>
+        <p>Please provide your email to use this tool</p>
           <label>
             Email:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
+          <input type="text" value={this.state.value} onChange={this.handleChange}  name=""/>
           </label>
           <Button type="submit" value="Submit" onClick={this.handleLoginClick}>Submit</Button>
       </form>

@@ -6,8 +6,6 @@ import { Container, Row, Col, Card, Button} from 'react-bootstrap'
 import mainImg from '../mainImg.png'
 import QueryWriterComponent from './QueryWriterComponent'
 
-
-
 class QueryWriter extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +17,6 @@ class QueryWriter extends Component {
   handleLoginClick(event) {
    this.setState({value: event.target.value});
    event.preventDefault();
-   alert('A name was submitted: ' + this.state.value);
    this.setState({isLoggedIn: true});
 
  }
