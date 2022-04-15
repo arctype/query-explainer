@@ -6,11 +6,15 @@ import Home from './components/Home'
 import QueryExplainer from './components/QueryExplainer'
 import QueryWriter from './components/QueryWriter'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import AppendHead from 'react-append-head';
+
 
 function App() {
 
   return (
+    
     <Router>
+
       <div className="App">
       <Navigation/>
         <Routes>

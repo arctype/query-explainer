@@ -7,6 +7,7 @@ import mainImg from '../mainImg.png'
 import QueryWriterComponent from './QueryWriterComponent'
 
 
+
 class QueryWriter extends Component {
   constructor(props) {
     super(props);

@@ -43,7 +43,7 @@ class QueryExplainer extends Component {
     let explanation = "";
     // Input to content filter
     openai.createCompletion("content-filter-alpha",{
-      prompt:"<|endoftext|>"+`Write a detailed, smart, informative, professional explanation of this SQL query: ${formDataObj.queryName}`+"\n--\nLabel:",
+      prompt:"<|endoftext|>"+`Write a detailed, smart, informative, professional explanation of this SQL query: ${formDataObj.queryName}. Do not repeat the description in the response.`+"\n--\nLabel:",
       temperature: 0,
       max_tokens: 1,
       top_p: 0,

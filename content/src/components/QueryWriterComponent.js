@@ -62,7 +62,7 @@ class QueryWriterComponent extends Component {
       else{
         // content filter result to davinci
         openai.createCompletion("text-davinci-002",{
-          prompt:`Write a detailed, smart, informative, professional SQL query using the following description: ${formDataObj.queryName}`,
+          prompt:`Write a detailed, smart, informative, professional SQL query using the following description: ${formDataObj.queryName}. Do not repeat the description in the response.`,
           temperature: 0.8,
           max_tokens: 200,
           top_p: 1,
